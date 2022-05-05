@@ -1,45 +1,26 @@
 {
   "version": 3,
   "targets": {
-    "net6.0": {
-      "raft/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
-        "compile": {
-          "bin/placeholder/raft.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/raft.dll": {}
-        }
-      }
-    }
+    "net6.0": {}
   },
-  "libraries": {
-    "raft/1.0.0": {
-      "type": "project",
-      "path": "../Raft/raft.csproj",
-      "msbuildProject": "../Raft/raft.csproj"
-    }
-  },
+  "libraries": {},
   "projectFileDependencyGroups": {
-    "net6.0": [
-      "raft >= 1.0.0"
-    ]
+    "net6.0": []
   },
   "packageFolders": {
-    "C:\\Users\\maksad\\.nuget\\packages\\": {}
+    "C:\\Users\\maksa\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\maksad\\Documents\\RaftClient\\RaftClient.csproj",
+      "projectUniqueName": "C:\\Users\\maksa\\Documents\\projects\\RaftClient\\RaftClient.csproj",
       "projectName": "RaftClient",
-      "projectPath": "C:\\Users\\maksad\\Documents\\RaftClient\\RaftClient.csproj",
-      "packagesPath": "C:\\Users\\maksad\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\maksad\\Documents\\RaftClient\\obj\\",
+      "projectPath": "C:\\Users\\maksa\\Documents\\projects\\RaftClient\\RaftClient.csproj",
+      "packagesPath": "C:\\Users\\maksa\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\maksa\\Documents\\projects\\RaftClient\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\maksad\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\maksa\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -52,11 +33,7 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {
-            "C:\\Users\\maksad\\Documents\\Raft\\raft.csproj": {
-              "projectPath": "C:\\Users\\maksad\\Documents\\Raft\\raft.csproj"
-            }
-          }
+          "projectReferences": {}
         }
       },
       "warningProperties": {
@@ -83,7 +60,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.102\\RuntimeIdentifierGraph.json"
       }
     }
   }

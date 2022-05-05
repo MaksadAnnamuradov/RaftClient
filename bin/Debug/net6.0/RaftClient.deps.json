@@ -7,27 +7,14 @@
   "targets": {
     ".NETCoreApp,Version=v6.0": {
       "RaftClient/1.0.0": {
-        "dependencies": {
-          "raft": "1.0.0"
-        },
         "runtime": {
           "RaftClient.dll": {}
-        }
-      },
-      "raft/1.0.0": {
-        "runtime": {
-          "raft.dll": {}
         }
       }
     }
   },
   "libraries": {
     "RaftClient/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "raft/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
