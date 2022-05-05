@@ -1,26 +1,50 @@
 {
   "version": 3,
   "targets": {
-    "net6.0": {}
+    "net6.0": {
+      "raft/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/raft.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/raft.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "raft/1.0.0": {
+      "type": "project",
+      "path": "../Raft/raft.csproj",
+      "msbuildProject": "../Raft/raft.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net6.0": []
+    "net6.0": [
+      "raft >= 1.0.0"
+    ]
   },
   "packageFolders": {
-    "C:\\Users\\maksa\\.nuget\\packages\\": {}
+    "C:\\Users\\justin.holsclaw\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\maksa\\Documents\\projects\\RaftClient\\RaftClient.csproj",
+      "projectUniqueName": "C:\\Users\\justin.holsclaw\\Desktop\\RaftImplementation\\RaftClient\\RaftClient.csproj",
       "projectName": "RaftClient",
-      "projectPath": "C:\\Users\\maksa\\Documents\\projects\\RaftClient\\RaftClient.csproj",
-      "packagesPath": "C:\\Users\\maksa\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\maksa\\Documents\\projects\\RaftClient\\obj\\",
+      "projectPath": "C:\\Users\\justin.holsclaw\\Desktop\\RaftImplementation\\RaftClient\\RaftClient.csproj",
+      "packagesPath": "C:\\Users\\justin.holsclaw\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\justin.holsclaw\\Desktop\\RaftImplementation\\RaftClient\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\maksa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\justin.holsclaw\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -33,7 +57,11 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\justin.holsclaw\\Desktop\\RaftImplementation\\Raft\\raft.csproj": {
+              "projectPath": "C:\\Users\\justin.holsclaw\\Desktop\\RaftImplementation\\Raft\\raft.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -60,7 +88,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.102\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
       }
     }
   }

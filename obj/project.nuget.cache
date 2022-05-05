@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "JgmYeremZPN9Qo0mDnA1WbtG7CjtJBmnCJ4RdfHx0WaaE37l7HcXC8e9RLnIKDm8N23rLptQe+aJW/qOAKPiUw==",
+  "dgSpecHash": "cnetlAdOM0eQuQSoqlVE1VCRHrdVcUUXkuz0uA+6FiFG30nyFCsxAlWeWXWtZwSp2GWJPc5KsQsXjHPFYXNKAQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\maksa\\Documents\\projects\\RaftClient\\RaftClient.csproj",
+  "projectFilePath": "C:\\Users\\justin.holsclaw\\Desktop\\RaftImplementation\\RaftClient\\RaftClient.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
