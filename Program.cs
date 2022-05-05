@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
-
+using System.Text.Json;
 using teichert.raft;
 
 class NameServer
@@ -18,13 +18,10 @@ class NameServer
     {
         int RaftNodePort = 54321;
 
-
         var distributorTask = Task.Run(() =>
         {
-
             while (true)
             {
-
                 Task.Run(() =>
                 {
 
@@ -43,60 +40,32 @@ class NameServer
 
                     string dataString = randName;
 
+                    IPEndPoint clientListener = new IPEndPoint(0, 0);
+
+                    //init raft message and send as json
                     var raftCommand = new RaftCommand {
                         CommandType = CommandType.Set,
                         Key = dataString,
                         Value = data,
-                        Client = new IPEndPoint(IPAddress.Loopback, RaftNodePort)
+                        Client = clientListener
                     };
+                    var myRaftMessage = new RaftMessage {
+                        MessageType = MessageType.Query,
+                        RaftCommand = raftCommand
+                    };
+                    var toSend = JsonSerializer.SerializeToUtf8Bytes(myRaftMessage);
 
-                    if (permutate % 2 == 0)
-                    {
-                        dataString = "nameServer-" + randName + ":" + data.ToString();
-                    }
-
-                    var sendData = encoding.GetBytes(dataString);
-                    Console.WriteLine("Sending data {0} to server {1}", dataString, RaftNodePort);
-                    udpClient.Send(sendData, dataString.ToString().Length, "127.0.0.1", RaftNodePort);
-
-                    var from = new IPEndPoint(0, 0);
-                    byte[] recvBuffer = udpClient.Receive(ref from);
-                    string message = encoding.GetString(recvBuffer);
-                    Console.WriteLine("{0} received from {1}", message, from);
-                    Console.WriteLine("Task stopping at time " + sw.Elapsed);
-
+                    //init client and send request
                     UdpClient jobClient = new UdpClient();
-
-                    // Console.WriteLine($"Free workers: {workersList.Count}");
-
-                    Console.WriteLine("Sending {0} to worker {1}", requestString, workersList.IndexOf(workersList[workerNumber]));
-
-                    jobClient.Send(requestData, requestData.Length, workersList[workerNumber]);
-
-                    IPEndPoint responder = new IPEndPoint(0, 0);
+                    jobClient.Send( toSend , toSend.Length, "127.0.0.1", RaftNodePort);
 
                     //wait for a message from the worker
-                    byte[] workerResponse = jobClient.Receive(ref responder);
+                    byte[] workerResponse = jobClient.Receive(ref clientListener);
                     string workerResponseString = encoding.GetString(workerResponse);
 
-                    Console.WriteLine("{0} received from worker {1}", workerResponseString, workerNumber);
-
-                    Console.WriteLine("Sending {0} to distributor {1}", workerResponseString, distRequester);
-                    byte[] responseData = encoding.GetBytes(workerResponseString);
-
-                    nsClient.Send(responseData, responseData.Length, distRequester);
-
+                    Console.WriteLine("{0} received from RAFT", workerResponseString);
                 });
-
             }
-
         });
-
-
-        Task.WaitAll(distributorTask, dbTask);
-
     }
-
-
-
 }
