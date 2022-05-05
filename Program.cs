@@ -40,14 +40,14 @@ class NameServer
 
                     string dataString = randName;
 
-                    IPEndPoint listener = new IPEndPoint(0, 0);
+                    IPEndPoint clientListener = new IPEndPoint(0, 0);
 
                     //init raft message and send as json
                     var raftCommand = new RaftCommand {
                         CommandType = CommandType.Set,
                         Key = dataString,
                         Value = data,
-                        Client = listener
+                        Client = clientListener
                     };
                     var myRaftMessage = new RaftMessage {
                         MessageType = MessageType.Query,
@@ -60,7 +60,7 @@ class NameServer
                     jobClient.Send( toSend , toSend.Length, "127.0.0.1", RaftNodePort);
 
                     //wait for a message from the worker
-                    byte[] workerResponse = jobClient.Receive(ref listener);
+                    byte[] workerResponse = jobClient.Receive(ref clientListener);
                     string workerResponseString = encoding.GetString(workerResponse);
 
                     Console.WriteLine("{0} received from RAFT", workerResponseString);
