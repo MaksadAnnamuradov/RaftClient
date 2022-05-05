@@ -139,29 +139,29 @@ class NameServer
 
 
 
-                // var serialized = "hello";
+                var serialized = "hello";
 
-                // //try catch
-                // try
-                // {
-                //     //send message
-                //     serialized = JsonSerializer.SerializeToUtf8Bytes(myRaftMessage);
-                // }
-                // catch (Exception e)
-                // {
-                //     Console.WriteLine(e.Message);
-                // }
-                // finally
-                // {
-                //     udpClient.Close();
-                // }
-                byte[] toSend = JsonSerializer.SerializeToUtf8Bytes(myRaftMessage);
+                //try catch
+                try
+                {
+                    //send message
+                    byte[] toSend = JsonSerializer.SerializeToUtf8Bytes(myRaftMessage);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+                finally
+                {
+                    udpClient.Close();
+                }
+                // byte[] toSend = JsonSerializer.SerializeToUtf8Bytes(myRaftMessage);
 
                 Console.WriteLine("Sending " + myRaftMessage + " to " + RaftNodePort);
 
                 //init client and send request
                 UdpClient jobClient = new UdpClient();
-                jobClient.Send(toSend, toSend.Length, "127.0.0.1", RaftNodePort);
+                // jobClient.Send(toSend, toSend.Length, "127.0.0.1", RaftNodePort);
 
                 //wait for a message from the worker
                 byte[] workerResponse = jobClient.Receive(ref clientListener);
