@@ -43,12 +43,12 @@ class NameServer
 
                     string dataString = randName;
 
-                    var raftCommand = new RaftCommand() {
+                    var raftCommand = new RaftCommand {
                         CommandType = CommandType.Set,
                         Key = dataString,
                         Value = data,
-                        IPEndPoint = new IPEndPoint(IPAddress.Loopback, RaftNodePort)
-                    }
+                        Client = new IPEndPoint(IPAddress.Loopback, RaftNodePort)
+                    };
 
                     if (permutate % 2 == 0)
                     {
